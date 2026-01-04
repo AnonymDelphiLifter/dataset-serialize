@@ -2,7 +2,6 @@ unit DataSet.Serialize.Config;
 
 {$IF DEFINED(FPC)}
   {$MODE DELPHI}{$H+}
-  {$codePage utf8}
 {$ENDIF}
 
 interface
@@ -17,7 +16,7 @@ type
     FExportLargeIntAsString: Boolean;
     FExportNullValues: Boolean;
     FExportNullAsEmptyString: Boolean;
-    FExportEmptyStringAsNull: Boolean;
+    FExportEmptyStringAsNull : boolean;
     FExportOnlyFieldsVisible: Boolean;
     FExportEmptyDataSet: Boolean;
     FFormatCurrency: string;
@@ -40,7 +39,7 @@ type
     property ExportOnlyFieldsVisible: Boolean read FExportOnlyFieldsVisible write FExportOnlyFieldsVisible;
     property ExportNullValues: Boolean read FExportNullValues write FExportNullValues;
     property ExportNullAsEmptyString: Boolean read FExportNullAsEmptyString write FExportNullAsEmptyString;
-    property ExportEmptyStringAsNull: Boolean read FExportEmptyStringAsNull write FExportEmptyStringAsNull;
+    property ExportEmptyStringAsNull : Boolean read FExportEmptyStringAsNull write FExportEmptyStringAsNull;
     property ExportEmptyDataSet: Boolean read FExportEmptyDataSet write FExportEmptyDataSet;
     property ExportChildDataSetAsJsonObject: Boolean read FExportChildDataSetAsJsonObject write FExportChildDataSetAsJsonObject;
     property TryConvertStringToJson: Boolean read FTryConvertStringToJson write FTryConvertStringToJson;
@@ -57,16 +56,10 @@ type
     FDecodeBase64BlobField: Boolean;
     FImportOnlyFieldsVisible: Boolean;
     FDecimalSeparator: Char;
-    FFormatDateTime: String;
-    FFormatDate: string;
-    FFormatTime: string;
   public
     constructor Create;
     property ImportOnlyFieldsVisible: Boolean read FImportOnlyFieldsVisible write FImportOnlyFieldsVisible;
     property DecimalSeparator: Char read FDecimalSeparator write FDecimalSeparator;
-    property FormatDate: string read FFormatDate write FFormatDate;
-    property FormatTime: string read FFormatTime write FFormatTime;
-    property FormatDateTime: string read FFormatDateTime write FFormatDateTime;
     property DecodeBase64BlobField: Boolean read FDecodeBase64BlobField write FDecodeBase64BlobField;
   end;
 
@@ -155,7 +148,7 @@ begin
   FTryConvertStringToJson := False;
   FExportNullValues := True;
   FExportNullAsEmptyString:= False;
-  FExportEmptyStringAsNull := False;
+  FExportEmptyStringAsNull := True;
   FExportOnlyFieldsVisible := True;
   ExportEmptyDataSet := False;
   FFormatCurrency := EmptyStr;
@@ -178,9 +171,6 @@ constructor TDataSetSerializeConfigImport.Create;
 begin
   FDecimalSeparator := '.';
   FImportOnlyFieldsVisible := True;
-  FFormatDate := 'YYYY-MM-DD';
-  FFormatTime := 'hh:nn:ss.zzz';
-  FFormatDateTime := 'yyyy-mm-dd hh:nn:ss.zzz';
   FDecodeBase64BlobField := True;
 end;
 

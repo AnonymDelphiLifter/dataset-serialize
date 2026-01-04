@@ -191,7 +191,7 @@ begin
 {$ELSE}
       if IsChild and FOnlyUpdatedRecords then
         // if (ADataSet.UpdateStatus = TUpdateStatus.usUnmodified) and not(HasChildModification(ADataSet)) then
-        if (ADataSet.UpdateStatus = TUpdateStatus.usInserted) then
+        if (ADataSet.UpdateStatus <> TUpdateStatus.usInserted) then
         begin
           ADataSet.Next;
           Continue;
